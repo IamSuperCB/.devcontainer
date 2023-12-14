@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "ms-vscode-remote.remote-containers",
+    "ms-azuretools.vscode-docker",
+    "redhat.vscode-yaml",
+    "geeksharp.openssl-configuration-file",
+    "mhutchie.git-graph",
+    "ms-vscode-remote.remote-ssh-edit"
+  ]
+}

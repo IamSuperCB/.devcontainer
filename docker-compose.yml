@@ -1,0 +1,20 @@
+version: "3"
+name: fos-devcontainer
+services:
+  dev:
+    container_name: FOS-dev
+    # image: ubuntu:focal
+    build: ./
+    # volumes:
+    #   - workspace:/workspace
+    # command: /bin/sh -c "while sleep 1000; do :; done"
+    networks:
+      fos:
+    ports:
+      - 2201:2222
+    restart: unless-stopped
+# volumes:
+#   workspace:
+networks:
+  fos:
+    external: true

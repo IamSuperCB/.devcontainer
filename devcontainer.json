@@ -1,0 +1,82 @@
+{
+  "name": "fos@IamSupeCB",
+  "dockerComposeFile": ["./docker-compose.yml"],
+  "service": "dev",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "version": "latest",
+      "username": "${localEnv:USER}",
+      "userUid": 1000,
+      "userGid": 1000,
+      "upgradePackages": false,
+      "installOhMyZsh": true,
+      "configureZshAsDefaultShell": true
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts/iron"
+    },
+    // "ghcr.io/devcontainers/features/dotnet:1": {
+    //   "version": "7"
+    // },
+    "ghcr.io/devcontainers/features/python:1": {
+      "installJupyterlab": true
+    },
+    "ghcr.io/devcontainers/features/aws-cli:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/azure-cli:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "dockerDashComposeVersion": "V2"
+    },
+    "ghcr.io/jarrodcolburn/features/flutter-sdk:0": {},
+    "ghcr.io/devcontainers/features/sshd:1": {}
+  },
+  "mounts": [
+    "source=.zshrc,target=/home/${localEnv:USER}/.zshrc,type=bind",
+    "source=.gitconfig,target=/home/${localEnv:USER}/.gitconfig,type=bind",
+    "source=${localEnv:HOME}/.azure,target=/home/${localEnv:USER}/.azure,type=bind",
+    "source=${localEnv:HOME}/.ssh,target=/home/${localEnv:USER}/.ssh,type=bind",
+    "source=${localEnv:PersonalMount},target=/home/${localEnv:USER}/personal,type=bind",
+    "source=${localEnv:TeamMount},target=/home/${localEnv:USER}/team,type=bind",
+    "source=/workspace,target=/workspace,type=bind"
+  ],
+  "containerUser": "${localEnv:USER}",
+  "containerEnv": {
+    "IamSuperCBPersona": "${localEnv:IamSuperCBPersona}",
+    "HOME": "${localEnv:HOME}",
+    "USER": "${localEnv:USER}"
+  },
+  "postCreateCommand": {
+    "postCreateCommand": "/workspace/github/iamsupercb/fos/.devcontainer/postCreateCommand.sh"
+  },
+  "postStartCommand": {
+    "postStartCommand": "/workspace/github/iamsupercb/fos/.devcontainer/postStartCommand.sh"
+  },
+  "postAttachCommand": {
+    "postAttachCommand": "/workspace/github/iamsupercb/fos/.devcontainer/postAttachCommand.sh"
+  },
+  "waitFor": "postStartCommand",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "workbench.sideBar.location": "right",
+        "workbench.colorTheme": "Blink (rainglow)",
+        "editor.tabSize": 2,
+        "editor.formatOnPaste": true,
+        "editor.formatOnSave": true,
+        "editor.inlineSuggest.enabled": true,
+        "redhat.telemetry.enabled": false,
+        "rest-client.enableTelemetry": false,
+        "terminal.integrated.env.linux": {
+          "LOG4JS_DEFAULT_LEVEL": "debug",
+          "DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT": "1"
+        }
+      }
+    }
+  },
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "none"
+}

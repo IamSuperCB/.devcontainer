@@ -1,0 +1,14 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = Carlos Betancourt
+	email = carlos@betancourtca.net
+[core]
+	autocrlf = false
+[fetch]
+	prune = true
+[http]
+	sslVerify = true
