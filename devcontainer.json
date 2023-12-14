@@ -15,9 +15,9 @@
     "ghcr.io/devcontainers/features/node:1": {
       "version": "lts/iron"
     },
-    // "ghcr.io/devcontainers/features/dotnet:1": {
-    //   "version": "7"
-    // },
+    "ghcr.io/devcontainers/features/dotnet:2": {
+      "additionalVersions": "lts"
+    },
     "ghcr.io/devcontainers/features/python:1": {
       "installJupyterlab": true
     },
