@@ -40,7 +40,7 @@
     "source=${localEnv:HOME}/.ssh,target=/home/${localEnv:USER}/.ssh,type=bind",
     "source=${localEnv:PersonalMount},target=/home/${localEnv:USER}/personal,type=bind",
     "source=${localEnv:TeamMount},target=/home/${localEnv:USER}/team,type=bind",
-    "source=/workspace,target=/workspace,type=bind"
+    "source=./,target=/workspace,type=bind"
   ],
   "containerUser": "${localEnv:USER}",
   "containerEnv": {
@@ -77,6 +77,6 @@
       }
     }
   },
-  "workspaceFolder": "/workspace",
+  "workspaceFolder": "./",
   "shutdownAction": "none"
 }
